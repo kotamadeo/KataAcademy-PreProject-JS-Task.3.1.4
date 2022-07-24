@@ -1,0 +1,13 @@
+#MySQL properties
+spring.datasource.driver-class-name=
+spring.datasource.url=
+spring.datasource.username=
+spring.datasource.password=
+spring.thymeleaf.prefix=
+spring.thymeleaf.suffix=
+
+#Hibernate properties
+spring.jpa.show_sql=
+spring.jpa.generate-ddl=
+spring.jpa.database-platform=
+spring.mvc.hiddenmethod.filter.enabled=
