@@ -7,7 +7,6 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -33,15 +32,13 @@ public class AdminController {
         return "admins/admin";
     }
 
-
     @PostMapping
-    public String createNewUser(@RequestParam("rolesId") String rolesId, @ModelAttribute("user") @Valid User user) {
+    public String createNewUser(@RequestParam("rolesId") long roleID, @ModelAttribute("user") @Valid User user) {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-        user.setRoles(userService.findRolesById(rolesId));
+        user.setRoles(userService.findRolesByID(roleID));
         userService.createNewUser(user);
         return "redirect:/admin";
     }
-
 
     @PatchMapping
     public String updateUserById(@RequestParam("id") long id,
@@ -52,16 +49,16 @@ public class AdminController {
                                  @RequestParam("age") byte age,
                                  @RequestParam("username") String username,
                                  @RequestParam(value = "password", required = false) String password,
-                                 @RequestParam(value = "rolesId", required = false) String roleID,
-                                 @ModelAttribute("user") @Valid  User user) {
+                                 @RequestParam(value = "rolesId", required = false) long roleID,
+                                 @ModelAttribute("user") @Valid User user) {
         user = new User(id, surname, name, sex, email, age, username);
         if (password != null) {
             user.setPassword(bCryptPasswordEncoder.encode(password));
         }
-        if (roleID != null) {
-            user.setRoles(userService.findRolesById(roleID));
+        if (roleID != 0) {
+            user.setRoles(userService.findRolesByID(roleID));
         }
-        userService.updateUserById(id, user);
+        userService.updateUser(user);
         return "redirect:/admin";
     }
 

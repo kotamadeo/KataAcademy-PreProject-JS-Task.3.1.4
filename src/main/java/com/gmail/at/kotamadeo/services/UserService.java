@@ -16,21 +16,21 @@ public interface UserService extends UserDetailsService {
 
     User getUser(long id);
 
-    User getUser(String username);
+    User getUser(String email);
 
     void createNewUser(User user);
 
     void createNewRole(Role role);
 
-    void updateUserById(long id, User user);
+    void updateUser(User user);
 
     void deleteUserById(Long id);
 
-    Set<Role> findRolesById(String roleID);
+    Set<Role> findRolesByID(long id);
 
     String getCurrentUsername();
 
-    boolean emailCheck(String email);
+    //boolean emailCheck(String email);
     @Override
     UserDetails loadUserByUsername(String username) throws UsernameNotFoundException;
 }

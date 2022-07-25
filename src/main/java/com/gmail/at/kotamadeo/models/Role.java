@@ -1,9 +1,6 @@
 package com.gmail.at.kotamadeo.models;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.*;
@@ -16,6 +13,7 @@ import javax.validation.constraints.Pattern;
 @AllArgsConstructor
 @Setter
 @Getter
+@ToString
 public class Role implements GrantedAuthority {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
