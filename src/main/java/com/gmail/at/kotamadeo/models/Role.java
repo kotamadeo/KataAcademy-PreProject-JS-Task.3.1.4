@@ -1,35 +1,60 @@
 package com.gmail.at.kotamadeo.models;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
+import java.util.Objects;
 
 @Entity
-@Table(name = "user_roles")
+@Table(name = "roles")
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Setter
-@Getter
-@ToString
 public class Role implements GrantedAuthority {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
-    @Column
-    @NotNull(message = "Роль не может быть пустой")
-    @Pattern(regexp = "ROLE_ADMIN|ROLE_USER", message = "Доступные роли: ADMIN\\USER!")
-    private String roleTitle;
+    private String name;
 
-    public Role(String roleTitle) {
-        this.roleTitle = roleTitle;
+    public Role(String name) {
+        this.name = name;
     }
 
     @Override
     public String getAuthority() {
-        return getRoleTitle();
+        return getName();
+    }
+
+    @Override
+    public String toString() {
+        return getName().replace("ROLE_", "");
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Role role = (Role) o;
+        if (!Objects.equals(id, role.id)) {
+            return false;
+        }
+        return Objects.equals(name, role.name);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (name != null ? name.hashCode() : 0);
+        return result;
     }
 }

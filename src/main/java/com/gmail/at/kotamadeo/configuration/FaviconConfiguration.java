@@ -11,7 +11,7 @@ import java.util.Collections;
 import java.util.List;
 
 @Configuration
-public class FaviconConfig {
+public class FaviconConfiguration {
     @Bean
     public SimpleUrlHandlerMapping customFaviconHandlerMapping() {
         SimpleUrlHandlerMapping mapping = new SimpleUrlHandlerMapping();
@@ -23,7 +23,7 @@ public class FaviconConfig {
     @Bean
     protected ResourceHttpRequestHandler faviconRequestHandler() {
         ResourceHttpRequestHandler requestHandler = new ResourceHttpRequestHandler();
-        ClassPathResource classPathResource = new ClassPathResource("src/main/WEB-INF/views/img/");
+        ClassPathResource classPathResource = new ClassPathResource("src/main/resources/public");
         List<Resource> locations = List.of(classPathResource);
         requestHandler.setLocations(locations);
         return requestHandler;

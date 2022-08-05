@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Панель администратора</title>
+    <link rel="shortcut icon" type="image/ico" th:href="@{favicon.ico}"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+          integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+</head>
+<body>
+
+<!--Шапка страницы-->
+<header>
+    <div class="container-fluid" style="padding: 0">
+        <div class="row">
+            <div class="col-12">
+                <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+                    <!-- Navbar content -->
+                    <div class="collapse navbar-collapse" id="user">
+                        <ul class="navbar-nav mr-auto">
+                            <a class="navbar-brand font-weight-bold" id="headerUsername"></a>
+                            <a class="navbar-brand">Роли: </a>
+                            <a class="navbar-brand font-weight-italic" id="headerRoles"></a>
+                        </ul>
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link" style="color: red" href="/logout">Выйти?
+                                    <img src="https://i.gifer.com/2GU.gif" alt="" width="40"
+                                         height="44">
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!--Основной контент страницы-->
+
+<div class="container-fluid">
+    <div class="row">
+
+        <!--Панель слева-->
+
+        <div class="col-2" style="padding: 0; padding-top: 15px">
+            <ul class="nav nav-pills flex-column">
+                <li class="nav-item">
+                    <a class="nav-link active" data-toggle="tab" href="#adminPanel">Администратор</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#userPanel">Пользователь</a>
+                </li>
+            </ul>
+        </div>
+
+        <!--Панель справа-->
+
+        <div class="col-10 bg-light">
+            <div class="tab-content" style="padding-top: 15px; height: 100vh">
+
+                <!--Панель админа-->
+
+                <div class="tab-pane fade show active" id="adminPanel">
+                    <h2 style="color: maroon"><strong>Панель администратора</strong></h2>
+                    <ul class="nav nav-tabs">
+                        <li class="nav-item">
+                            <a class="nav-link active" data-toggle="tab" id="allUsersTable" href="#allUsers">Пользователи</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#newUser">Создать нового пользователя</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+
+                        <!--Таблица пользователей-->
+
+                        <div class="tab-pane fade show active" id="allUsers">
+                            <div class="card">
+                                <h5 class="card-header text-center" style="color: #37b9ff"><i>Список всех
+                                    пользователей:</i></h5>
+                                <div class="card-body text-center">
+                                    <table class="table table-striped">
+                                        <thead>
+                                        <tr>
+                                            <th>№</th>
+                                            <th>Имя</th>
+                                            <th>Фамилия</th>
+                                            <th>Email</th>
+                                            <th>Возраст</th>
+                                            <th>Роль</th>
+                                            <th>Изменить данные пользователя</th>
+                                            <th>Удалить пользователя</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody id="tbodyAllUserTable">
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--Вкладка для нового пользователя-->
+
+                        <div class="tab-pane fade" id="newUser">
+                            <div class="form-group">
+                                <div class="control-group required">
+                                    <div class="card">
+                                        <h5 class="card-header text-center" style="color: mediumpurple">Создание нового
+                                            пользователя:</h5>
+                                        <div class="card-body text-center">
+                                            <div class="form justify-content-center mx-auto col-5">
+                                                <form id="formNewUser" name="formNewUser">
+                                                    <p>
+                                                        <label class="container-fluid"
+                                                               for="newUserName"
+                                                               style="color: royalblue"><strong>Имя</strong>
+                                                            <input class="form-control" type="text"
+                                                                   style="color: darkred" name="name"
+                                                                   id="newUserName" placeholder="Введите имя"/>
+                                                        </label>
+                                                    </p>
+
+                                                    <p>
+                                                        <label class="container-fluid" for="newUserLastName"
+                                                               style="color: royalblue"><strong>Фамилия</strong>
+                                                            <input class="form-control" type="text"
+                                                                   style="color: darkred" name="surname"
+                                                                   id="newUserLastName" placeholder="Введите фамилию"/>
+                                                        </label>
+                                                    </p>
+
+                                                    <p>
+                                                        <label class="container-fluid"
+                                                               for="newUserEmail"
+                                                               style="color: royalblue"><strong>Email</strong>
+                                                            <input class="form-control" type="email"
+                                                                   style="color: darkred" name="email"
+                                                                   id="newUserEmail"
+                                                                   placeholder="Введите валидный email"/>
+                                                        </label>
+                                                    </p>
+
+                                                    <p>
+                                                        <label class="container-fluid"
+                                                               for="newUserAge"
+                                                               style="color: royalblue"><strong>Возраст</strong>
+                                                            <input class="form-control" type="number"
+                                                                   style="color: darkred" name="age"
+                                                                   id="newUserAge" placeholder="введите возраст"/>
+                                                        </label>
+                                                    </p>
+
+                                                    <p>
+                                                        <label class="container-fluid" for="newUserPassword"
+                                                               style="color: royalblue"><strong>Пароль</strong>
+                                                            <input class="form-control" type="password"
+                                                                   style="color: darkred" name="password"
+                                                                   id="newUserPassword" placeholder="введите пароль"/>
+                                                        </label>
+                                                    </p>
+                                                    <label class="container-fluid"
+                                                           for="newUserRoles"
+                                                           style="color: royalblue"><strong>Роли</strong>
+                                                        <select id="newUserRoles" class="form-control"
+                                                                style="color: darkred" name="roles"
+                                                                multiple size="2">
+
+                                                        </select>
+                                                    </label>
+                                                    <button type="submit" id="newUserButton"
+                                                            class="btn btn-success text-light">создать нового
+                                                        пользователя?
+                                                    </button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--Панель пользователя-->
+
+                <div class="tab-pane fade" id="userPanel">
+                    <h2 style="color: maroon"><strong>Персональная страница пользователя</strong></h2>
+                    <div class="card">
+                        <h5 class="card-header text-center" style="color: #37b9ff"><i>Информация о пользователе:</i>
+                        </h5>
+                        <div class="card-body text-center">
+                            <table class="table table-striped">
+                                <thead>
+                                <tr>
+                                    <th>№</th>
+                                    <th>Имя</th>
+                                    <th>Фамилия</th>
+                                    <th>Email</th>
+                                    <th>Возраст</th>
+                                    <th>Роль</th>
+                                </tr>
+                                </thead>
+                                <tbody id="userPanelBody">
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Модальное окно редактирования пользователя-->
+
+<div class="modal fade" id="edit" tabindex="-1" role="dialog"
+     aria-labelledby="editModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form id="formEditUser">
+                <div class="modal-header text-center">
+                    <h5 class="modal-title text-center" style="color: mediumpurple">Изменить данные</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body text-center">
+                    <div class="form-group required">
+                        <div class="controls">
+                            <p>
+                                <label for="idEditUser" style="color: royalblue"><strong>№</strong>
+                                    <input class="form-control" type="number" style="color: darkred" name="id"
+                                           id="idEditUser" disabled/>
+                                </label>
+                            </p>
+
+                            <p>
+                                <label for="firstNameEditUser" style="color: royalblue"><strong>Имя</strong>
+                                    <input class="form-control" type="text" style="color: darkred" name="name"
+                                           id="firstNameEditUser"/>
+                                </label>
+                            </p>
+
+                            <p>
+                                <label for="lastNameEditUser" style="color: royalblue"><strong>Фамилия</strong>
+                                    <input class="form-control" type="text" style="color: darkred" name="surname"
+                                           id="lastNameEditUser"/>
+                                </label>
+                            </p>
+
+                            <p>
+                                <label for="ageEditUser" style="color: royalblue"><strong>Возраст</strong>
+                                    <input class="form-control" type="number" style="color: darkred" name="age"
+                                           id="ageEditUser"/>
+                                </label>
+                            </p>
+
+                            <p>
+                                <label for="emailEditUser" style="color: royalblue"><strong>Email</strong>
+                                    <input class="form-control" type="email" style="color: darkred" name="email"
+                                           id="emailEditUser"/>
+                                </label>
+                            </p>
+
+                            <p>
+                                <label for="passwordEditUser" style="color: royalblue"><strong>Пароль</strong>
+                                    <input class="form-control" type="password" style="color: darkred" name="password"
+                                           id="passwordEditUser"/>
+                                </label>
+                            </p>
+
+                            <label class="container-fluid col-6" for="rolesEditUser" style="color: royalblue"><strong>Роли</strong>
+                                <select class="form-control" id="rolesEditUser" style="color: darkred" name="roles"
+                                        multiple size="2">
+                                </select>
+                            </label>
+                            <h1></h1>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" id="editFormCloseButton" class="btn btn-danger text-light"
+                                    data-dismiss="modal">закрыть
+                            </button>
+                            <button type="submit" class="btn btn-success text-light">изменить</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!--Модальное окно удаления пользователя-->
+
+<div class="modal fade" id="delete" tabindex="-1" role="dialog"
+     aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form id="formDeleteUser">
+                <div class="modal-header text-center">
+                    <h5 class="modal-title text-center">Удалить пользователя</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body text-center">
+                    <div class="form-group required">
+                        <div class="controls">
+                            <p>
+                                <label for="idDeleteUser"><strong>ID</strong>
+                                    <input class="form-control" type="number" name="id" id="idDeleteUser" disabled>
+                                </label>
+                            </p>
+
+                            <p>
+                                <label for="firstNameDeleteUser"><strong>Имя</strong>
+                                    <input class="form-control" type="text" name="name" id="firstNameDeleteUser"
+                                           disabled>
+                                </label>
+                            </p>
+
+                            <p>
+                                <label for="lastNameDeleteUser"><strong>Фамилия</strong>
+                                    <input class="form-control" type="text" name="surname" id="lastNameDeleteUser"
+                                           disabled>
+                                </label>
+                            </p>
+
+                            <p>
+                                <label for="ageDeleteUser"><strong>Возраст</strong>
+                                    <input class="form-control" type="number" name="age" id="ageDeleteUser" disabled>
+                                </label>
+                            </p>
+
+                            <p>
+                                <label for="emailDeleteUser"><strong>Email</strong>
+                                    <input class="form-control" type="email" name="email" id="emailDeleteUser" disabled>
+                                </label>
+                            </p>
+
+                            <label class="container-fluid col-6" for="rolesDeleteUser"><strong>Роль</strong>
+                                <select class="form-control" id="rolesDeleteUser" name="roles" multiple size="2"
+                                        disabled>
+
+                                </select>
+                            </label>
+                            <h1></h1>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" id="deleteFormCloseButton" class="btn btn-secondary text-light"
+                                    data-dismiss="modal">закрыть
+                            </button>
+                            <button type="submit" class="btn btn-danger text-light">удалить</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<!-- Отдельные JS для Popper и Bootstrap -->
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js"
+        integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2"
+        crossorigin="anonymous"></script>
+
+<!-- JS -->
+<script type="text/javascript" src="pain.js"></script>
+</body>
+</html>

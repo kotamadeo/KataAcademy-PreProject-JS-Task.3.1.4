@@ -1,13 +1,12 @@
-#MySQL properties
 spring.datasource.driver-class-name=
 spring.datasource.url=
 spring.datasource.username=
 spring.datasource.password=
-spring.thymeleaf.prefix=
-spring.thymeleaf.suffix=
 
-#Hibernate properties
-spring.jpa.show_sql=
-spring.jpa.generate-ddl=
+
+spring.jpa.show-sql=true
+spring.mvc.hiddenmethod.filter.enabled=true
+spring.jpa.open-in-view = false
+spring.jpa.hibernate.ddl-auto = create-drop
 spring.jpa.database-platform=
-spring.mvc.hiddenmethod.filter.enabled=
+spring.main.allow-circular-references = true

@@ -1,5 +1,6 @@
 package com.gmail.at.kotamadeo.configuration;
 
+
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
@@ -12,16 +13,14 @@ import java.util.Set;
 
 @Component
 public class AuthenticationSuccessUserHandler implements AuthenticationSuccessHandler {
+
     @Override
-    public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
-                                        Authentication authentication) throws IOException {
+    public void onAuthenticationSuccess(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Authentication authentication) throws IOException {
         Set<String> roles = AuthorityUtils.authorityListToSet(authentication.getAuthorities());
         if (roles.contains("ROLE_ADMIN")) {
-            response.sendRedirect("/admin");
-        } else if (roles.contains("ROLE_USER")) {
-            response.sendRedirect("/user");
+            httpServletResponse.sendRedirect("/admin");
         } else {
-            response.sendRedirect("/");
+            httpServletResponse.sendRedirect("/user");
         }
     }
 }
