@@ -6,7 +6,7 @@ spring.datasource.password=
 
 spring.jpa.show-sql=true
 spring.mvc.hiddenmethod.filter.enabled=true
-spring.jpa.open-in-view = false
-spring.jpa.hibernate.ddl-auto = create-drop
+spring.jpa.open-in-view=false
+spring.jpa.hibernate.ddl-auto=create-drop
 spring.jpa.database-platform=
-spring.main.allow-circular-references = true
+spring.main.allow-circular-references=true

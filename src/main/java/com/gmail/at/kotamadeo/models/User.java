@@ -11,11 +11,15 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.Collection;
 import java.util.Set;
 
 @Entity
-@Table(name="users", uniqueConstraints = @UniqueConstraint(columnNames = "email"))
+@Table(name = "users", uniqueConstraints = @UniqueConstraint(columnNames = "email"))
 @Getter
 @Setter
 @NoArgsConstructor
@@ -27,18 +31,35 @@ public class User implements UserDetails {
     private Long id;
 
     @Column
+    @NotNull(message = "Имя не может быть пустым!")
+    @Size(min = 3, max = 30, message = "Имя должно содержать от 3 до 30 символов!")
     private String name;
 
     @Column
+    @NotNull(message = "Фамилия не может быть пустой!")
+    @Size(min = 3, max = 30, message = "Фамилия должна содержать от 3 до 30 символов!")
     private String surname;
 
     @Column
-    private byte age;
+    @NotNull(message = "Пол не может быть пустым!")
+    @Size(min = 1, max = 6, message = "обозначение пола должно быть 1 символом!")
+    private String sex;
 
     @Column
+    private String nickname;
+    @Column
+    @Email(message = "Email должен быть валидным!")
     private String email;
 
     @Column
+    @Min(message = "Возраст не может быть отрицательным!", value = 0)
+    @NotNull(message = "Возраст не может быть пустым!")
+    private byte age;
+
+    @Column
+    //    @Pattern(regexp = "^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#&()–{}:;',?/*~$^+=<>]).{7,20}$",
+//            message = "Пароль должен содержать минимум 7 символов, максимум 20, а также 1 цифру, " +
+//                    "1 букву в верхнем\\нижнем регистре и специальный символ!")
     private String password;
 
     @ManyToMany(cascade = CascadeType.MERGE)
@@ -48,10 +69,12 @@ public class User implements UserDetails {
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles;
 
-    public User (String surname, String name, String email, byte age) {
+    public User(String surname, String name, String sex, String email, String nickname, byte age) {
         this.surname = surname;
         this.name = name;
+        this.sex = sex;
         this.email = email;
+        this.nickname = nickname;
         this.age = age;
     }
 

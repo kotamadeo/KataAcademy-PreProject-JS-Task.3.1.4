@@ -90,8 +90,10 @@
                                             <th>№</th>
                                             <th>Имя</th>
                                             <th>Фамилия</th>
+                                            <th>Пол</th>
                                             <th>Email</th>
                                             <th>Возраст</th>
+                                            <th>Ник</th>
                                             <th>Роль</th>
                                             <th>Изменить данные пользователя</th>
                                             <th>Удалить пользователя</th>
@@ -117,30 +119,39 @@
                                                 <form id="formNewUser" name="formNewUser">
                                                     <p>
                                                         <label class="container-fluid"
-                                                               for="newUserName"
+                                                               for="createUserName"
                                                                style="color: royalblue"><strong>Имя</strong>
                                                             <input class="form-control" type="text"
                                                                    style="color: darkred" name="name"
-                                                                   id="newUserName" placeholder="Введите имя"/>
+                                                                   id="createUserName" placeholder="Введите имя"/>
                                                         </label>
                                                     </p>
 
                                                     <p>
-                                                        <label class="container-fluid" for="newUserLastName"
+                                                        <label class="container-fluid" for="createUserSurname"
                                                                style="color: royalblue"><strong>Фамилия</strong>
                                                             <input class="form-control" type="text"
                                                                    style="color: darkred" name="surname"
-                                                                   id="newUserLastName" placeholder="Введите фамилию"/>
+                                                                   id="createUserSurname" placeholder="Введите фамилию"/>
+                                                        </label>
+                                                    </p>
+
+                                                    <p>
+                                                        <label class="container-fluid" for="createUserSex"
+                                                               style="color: royalblue"><strong>Пол</strong>
+                                                            <input class="form-control" type="text"
+                                                                   style="color: darkred" name="sex"
+                                                                   id="createUserSex" placeholder="Введите пол"/>
                                                         </label>
                                                     </p>
 
                                                     <p>
                                                         <label class="container-fluid"
-                                                               for="newUserEmail"
+                                                               for="createUserEmail"
                                                                style="color: royalblue"><strong>Email</strong>
                                                             <input class="form-control" type="email"
                                                                    style="color: darkred" name="email"
-                                                                   id="newUserEmail"
+                                                                   id="createUserEmail"
                                                                    placeholder="Введите валидный email"/>
                                                         </label>
                                                     </p>
@@ -156,17 +167,27 @@
                                                     </p>
 
                                                     <p>
-                                                        <label class="container-fluid" for="newUserPassword"
+                                                        <label class="container-fluid"
+                                                               for="createUserNickname"
+                                                               style="color: royalblue"><strong>Ник</strong>
+                                                            <input class="form-control" type="text"
+                                                                   style="color: darkred" name="nickname"
+                                                                   id="createUserNickname" placeholder="введите ник"/>
+                                                        </label>
+                                                    </p>
+
+                                                    <p>
+                                                        <label class="container-fluid" for="createUserPassword"
                                                                style="color: royalblue"><strong>Пароль</strong>
                                                             <input class="form-control" type="password"
                                                                    style="color: darkred" name="password"
-                                                                   id="newUserPassword" placeholder="введите пароль"/>
+                                                                   id="createUserPassword" placeholder="введите пароль"/>
                                                         </label>
                                                     </p>
                                                     <label class="container-fluid"
-                                                           for="newUserRoles"
+                                                           for="createUserRoles"
                                                            style="color: royalblue"><strong>Роли</strong>
-                                                        <select id="newUserRoles" class="form-control"
+                                                        <select id="createUserRoles" class="form-control"
                                                                 style="color: darkred" name="roles"
                                                                 multiple size="2">
 
@@ -200,8 +221,10 @@
                                     <th>№</th>
                                     <th>Имя</th>
                                     <th>Фамилия</th>
+                                    <th>Пол</th>
                                     <th>Email</th>
                                     <th>Возраст</th>
+                                    <th>Ник</th>
                                     <th>Роль</th>
                                 </tr>
                                 </thead>
@@ -233,49 +256,63 @@
                     <div class="form-group required">
                         <div class="controls">
                             <p>
-                                <label for="idEditUser" style="color: royalblue"><strong>№</strong>
+                                <label for="updateUserId" style="color: royalblue"><strong>№</strong>
                                     <input class="form-control" type="number" style="color: darkred" name="id"
-                                           id="idEditUser" disabled/>
+                                           id="updateUserId" disabled/>
                                 </label>
                             </p>
 
                             <p>
-                                <label for="firstNameEditUser" style="color: royalblue"><strong>Имя</strong>
+                                <label for="updateUserName" style="color: royalblue"><strong>Имя</strong>
                                     <input class="form-control" type="text" style="color: darkred" name="name"
-                                           id="firstNameEditUser"/>
+                                           id="updateUserName"/>
                                 </label>
                             </p>
 
                             <p>
-                                <label for="lastNameEditUser" style="color: royalblue"><strong>Фамилия</strong>
+                                <label for="updateUserSurname" style="color: royalblue"><strong>Фамилия</strong>
                                     <input class="form-control" type="text" style="color: darkred" name="surname"
-                                           id="lastNameEditUser"/>
+                                           id="updateUserSurname"/>
                                 </label>
                             </p>
 
                             <p>
-                                <label for="ageEditUser" style="color: royalblue"><strong>Возраст</strong>
+                                <label for="UpdateUserSex" style="color: royalblue"><strong>Пол</strong>
+                                    <input class="form-control" type="text" style="color: darkred" name="sex"
+                                           id="UpdateUserSex"/>
+                                </label>
+                            </p>
+
+                            <p>
+                                <label for="UpdateUserAge" style="color: royalblue"><strong>Возраст</strong>
                                     <input class="form-control" type="number" style="color: darkred" name="age"
-                                           id="ageEditUser"/>
+                                           id="UpdateUserAge"/>
                                 </label>
                             </p>
 
                             <p>
-                                <label for="emailEditUser" style="color: royalblue"><strong>Email</strong>
+                                <label for="updateUserEmail" style="color: royalblue"><strong>Email</strong>
                                     <input class="form-control" type="email" style="color: darkred" name="email"
-                                           id="emailEditUser"/>
+                                           id="updateUserEmail"/>
                                 </label>
                             </p>
 
                             <p>
-                                <label for="passwordEditUser" style="color: royalblue"><strong>Пароль</strong>
-                                    <input class="form-control" type="password" style="color: darkred" name="password"
-                                           id="passwordEditUser"/>
+                                <label for="updateUserNickname" style="color: royalblue"><strong>Ник</strong>
+                                    <input class="form-control" type="text" style="color: darkred" name="nickname"
+                                           id="updateUserNickname"/>
                                 </label>
                             </p>
 
-                            <label class="container-fluid col-6" for="rolesEditUser" style="color: royalblue"><strong>Роли</strong>
-                                <select class="form-control" id="rolesEditUser" style="color: darkred" name="roles"
+                            <p>
+                                <label for="updateUserPassword" style="color: royalblue"><strong>Пароль</strong>
+                                    <input class="form-control" type="password" style="color: darkred" name="password"
+                                           id="updateUserPassword"/>
+                                </label>
+                            </p>
+
+                            <label class="container-fluid col-6" for="updateUserRoles" style="color: royalblue"><strong>Роли</strong>
+                                <select class="form-control" id="updateUserRoles" style="color: darkred" name="roles"
                                         multiple size="2">
                                 </select>
                             </label>
@@ -311,39 +348,52 @@
                     <div class="form-group required">
                         <div class="controls">
                             <p>
-                                <label for="idDeleteUser"><strong>ID</strong>
-                                    <input class="form-control" type="number" name="id" id="idDeleteUser" disabled>
+                                <label for="DeleteUserId"><strong>ID</strong>
+                                    <input class="form-control" type="number" name="id" id="DeleteUserId" disabled>
                                 </label>
                             </p>
 
                             <p>
-                                <label for="firstNameDeleteUser"><strong>Имя</strong>
-                                    <input class="form-control" type="text" name="name" id="firstNameDeleteUser"
+                                <label for="DeleteUserName"><strong>Имя</strong>
+                                    <input class="form-control" type="text" name="name" id="DeleteUserName"
                                            disabled>
                                 </label>
                             </p>
 
                             <p>
-                                <label for="lastNameDeleteUser"><strong>Фамилия</strong>
-                                    <input class="form-control" type="text" name="surname" id="lastNameDeleteUser"
+                                <label for="DeleteUserSurname"><strong>Фамилия</strong>
+                                    <input class="form-control" type="text" name="surname" id="DeleteUserSurname"
                                            disabled>
                                 </label>
                             </p>
 
                             <p>
-                                <label for="ageDeleteUser"><strong>Возраст</strong>
-                                    <input class="form-control" type="number" name="age" id="ageDeleteUser" disabled>
+                                <label for="DeleteUserSex"><strong>Пол</strong>
+                                    <input class="form-control" type="text" name="sex" id="DeleteUserSex"
+                                           disabled>
                                 </label>
                             </p>
 
                             <p>
-                                <label for="emailDeleteUser"><strong>Email</strong>
-                                    <input class="form-control" type="email" name="email" id="emailDeleteUser" disabled>
+                                <label for="DeleteUserAge"><strong>Возраст</strong>
+                                    <input class="form-control" type="number" name="age" id="DeleteUserAge" disabled>
                                 </label>
                             </p>
 
-                            <label class="container-fluid col-6" for="rolesDeleteUser"><strong>Роль</strong>
-                                <select class="form-control" id="rolesDeleteUser" name="roles" multiple size="2"
+                            <p>
+                                <label for="DeleteUserNickname"><strong>Ник</strong>
+                                    <input class="form-control" type="text" name="nickname" id="DeleteUserNickname" disabled>
+                                </label>
+                            </p>
+
+                            <p>
+                                <label for="DeleteUserEmail"><strong>Email</strong>
+                                    <input class="form-control" type="email" name="email" id="DeleteUserEmail" disabled>
+                                </label>
+                            </p>
+
+                            <label class="container-fluid col-6" for="deleteUserRoles"><strong>Роль</strong>
+                                <select class="form-control" id="deleteUserRoles" name="roles" multiple size="2"
                                         disabled>
 
                                 </select>

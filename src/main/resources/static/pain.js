@@ -9,7 +9,7 @@ async function newUser() {
                 let el = document.createElement("option");
                 el.text = role.name.substring(5);
                 el.value = role.id;
-                $('#newUserRoles')[0].appendChild(el);
+                $('#createUserRoles')[0].appendChild(el);
             })
         })
 
@@ -34,8 +34,10 @@ async function newUser() {
             body: JSON.stringify({
                 name: form.name.value,
                 surname: form.surname.value,
+                sex: form.sex.value,
                 email: form.email.value,
                 age: form.age.value,
+                nickname: form.nickname.value,
                 password: form.password.value,
                 roles: newUserRoles
             })
@@ -62,8 +64,10 @@ async function allUsers() {
                             <td>${user.id}</td>
                             <td>${user.name}</td>
                             <td>${user.surname}</td>   
+                            <td>${user.sex}</td>   
                             <td>${user.email}</td>
-                            <td>${user.age}</td>                     
+                            <td>${user.age}</td>       
+                            <td>${user.nickname}</td>                
                             <td>${user.roles.map(role => " " + role.name.substring(5))}</td>
                             <td>
                                 <button type="button" class="btn btn-primary text-light" data-toggle="modal" id="buttonEdit"
@@ -90,11 +94,13 @@ async function showDeleteModal(id) {
     form.id.value = user.id;
     form.name.value = user.name;
     form.surname.value = user.surname;
+    form.sex.value = user.sex;
     form.age.value = user.age;
     form.email.value = user.email;
+    form.nickname.value = user.nickname;
 
 
-    $('#rolesDeleteUser').empty();
+    $('#deleteUserRoles').empty();
 
     await fetch("http://localhost:8080/api/roles")
         .then(res => res.json())
@@ -111,7 +117,7 @@ async function showDeleteModal(id) {
                 el.text = role.name.substring(5);
                 el.value = role.id;
                 if (selectedRole) el.selected = true;
-                $('#rolesDeleteUser')[0].appendChild(el);
+                $('#deleteUserRoles')[0].appendChild(el);
             })
         });
 }
@@ -152,11 +158,13 @@ async function showEditModal(id) {
     form.id.value = user.id;
     form.name.value = user.name;
     form.surname.value = user.surname;
+    form.sex.value = user.sex;
     form.age.value = user.age;
     form.email.value = user.email;
+    form.nickname.value = user.nickname;
     form.password.value = user.password;
 
-    $('#rolesEditUser').empty();
+    $('#updateUserRoles').empty();
 
     await fetch("http://localhost:8080/api/roles")
         .then(res => res.json())
@@ -173,7 +181,7 @@ async function showEditModal(id) {
                 el.text = role.name.substring(5);
                 el.value = role.id;
                 if (selectedRole) el.selected = true;
-                $('#rolesEditUser')[0].appendChild(el);
+                $('#updateUserRoles')[0].appendChild(el);
             })
         })
 }
@@ -203,8 +211,10 @@ function editUser() {
                 id: editForm.id.value,
                 name: editForm.name.value,
                 surname: editForm.surname.value,
+                sex: editForm.sex.value,
                 age: editForm.age.value,
                 email: editForm.email.value,
+                nickname: editForm.nickname,
                 password: editForm.password.value,
                 roles: editUserRoles
             })
@@ -231,8 +241,10 @@ async function thisUser() {
                 <td>${data.id}</td>
                 <td>${data.name}</td>
                 <td>${data.surname}</td>
+                <td>${data.sex}</td>
                 <td>${data.email}</td>
                 <td>${data.age}</td>
+                <td>${data.nickname}</td>
                 <td>${roles}</td>)`;
             $('#userPanelBody').append(user);
         })

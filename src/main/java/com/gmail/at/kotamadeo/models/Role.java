@@ -7,6 +7,8 @@ import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import java.util.Objects;
 
 @Entity
@@ -20,6 +22,9 @@ public class Role implements GrantedAuthority {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column
+    @NotNull(message = "Роль не может быть пустой")
+    @Pattern(regexp = "ROLE_ADMIN|ROLE_USER", message = "Доступные роли: ADMIN\\USER!")
     private String name;
 
     public Role(String name) {

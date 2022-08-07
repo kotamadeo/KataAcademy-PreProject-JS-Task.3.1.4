@@ -37,13 +37,13 @@ public class CreateRolesAfterStart {
             roleService.save(user);
             Set<Role> roles = new HashSet<>();
             roles.add(user);
-            User simpleUser = new User("Гладушева", "Елена", "elenkaglad@mail.ru", (byte) 28);
+            User simpleUser = new User("Гладушева", "Елена", "ж", "elenkaglad@mail.ru", "dangeRose", (byte) 28);
             simpleUser.setRoles(roles);
             simpleUser.setPassword(passwordEncoder.encode("elenkaglad@mail.ru"));
             roles = new HashSet<>();
             roles.add(user);
             roles.add(admin);
-            User adminUser = new User("Кузнецов", "Игорь", "kotamadeo@gmail.com", (byte) 25);
+            User adminUser = new User("Кузнецов", "Игорь", "м", "kotamadeo@gmail.com", "kotamadeo", (byte) 25);
             adminUser.setRoles(roles);
             adminUser.setPassword(passwordEncoder.encode("kotamadeo@gmail.com"));
             userServiceImpl.saveUser(simpleUser);
