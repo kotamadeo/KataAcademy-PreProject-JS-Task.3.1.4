@@ -46,8 +46,8 @@ public class CreateRolesAfterStart {
             User adminUser = new User("Кузнецов", "Игорь", "м", "kotamadeo@gmail.com", "kotamadeo", (byte) 25);
             adminUser.setRoles(roles);
             adminUser.setPassword(passwordEncoder.encode("kotamadeo@gmail.com"));
-            userServiceImpl.saveUser(simpleUser);
-            userServiceImpl.saveUser(adminUser);
+            userServiceImpl.createUser(simpleUser);
+            userServiceImpl.createUser(adminUser);
             System.out.println();
             System.out.println("*****************************");
             System.out.println("User:\nL: elenkaglad@mail.ru\nP: elenkaglad@mail.ru\n\nAdmin:\nL:kotamadeo@gmail.com\nP:kotamadeo@gmail.com");

@@ -53,7 +53,7 @@ public class AdminRestController {
             String errors = getErrorsList(bindingResult);
             return new ResponseEntity<>(new InfoException(errors), HttpStatus.BAD_REQUEST);
         }
-        userService.saveUser(user);
+        userService.createUser(user);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
