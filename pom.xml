@@ -11,7 +11,7 @@
 	<groupId>com.gmail.at.kotamadeo</groupId>
 	<artifactId>PreProject-Task_3.1.4.</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>KataPP3.1.4</name>
+	<name>PreProject-Task_3.1.4.</name>
 	<description>Какая же это жопа</description>
 	<properties>
 		<java.version>17</java.version>
