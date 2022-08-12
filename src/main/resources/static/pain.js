@@ -214,7 +214,7 @@ function editUser() {
                 sex: editForm.sex.value,
                 age: editForm.age.value,
                 email: editForm.email.value,
-                nickname: editForm.nickname,
+                nickname: editForm.nickname.value,
                 password: editForm.password.value,
                 roles: editUserRoles
             })
