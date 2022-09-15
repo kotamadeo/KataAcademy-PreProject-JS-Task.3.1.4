@@ -62,7 +62,7 @@ public class UserServiceImpl implements UserService {
         if (roles.isEmpty()) {
             user.setRoles(Collections.singleton(new Role(1L, "ROLE_USER")));
         }
-        if (!user.getPassword().contains("$2a$12$")) {
+        if (!userRepository.findById(user.getId()).get().getPassword().contains(user.getPassword())) {
             user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         }
     }
